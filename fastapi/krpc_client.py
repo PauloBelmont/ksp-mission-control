@@ -42,10 +42,16 @@ def get_vessel_data():
             fuel_amount = 0.0
 
         return {
+            # Flight data
             "altitude": float(flight.mean_altitude),
-            "velocity": float(flight.speed),
+            "vertical_speed": float(flight.vertical_speed),
+            "horizontal_speed": float(flight.horizontal_speed),
+            "heading": float(flight.heading),
+            # Orbital data
             "apoapsis": float(vessel.orbit.apoapsis_altitude),
             "periapsis": float(vessel.orbit.periapsis_altitude),
+            "body": vessel.orbit.body.name,
+            # Resources
             "fuel": fuel_amount,
         }
     except Exception as e:
